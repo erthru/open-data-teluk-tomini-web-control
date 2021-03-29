@@ -23,7 +23,7 @@ const refreshToken = async () => {
 
         if (json.message === "UNAUTHORIZED") {
             session.clear();
-            location.href = "/login";
+            window.location.href = "/login";
         } else {
             session.create(json.token, json.refreshToken, session.get().password!!);
         }
