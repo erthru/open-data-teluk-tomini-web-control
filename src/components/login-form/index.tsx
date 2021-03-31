@@ -23,10 +23,9 @@ const CLoginForm = () => {
         const response = await authRepo.login(username, password);
 
         if (response.token === null) {
-            setIsLoginFailed(true)
-            setIsLoading(false)
-        }
-        else {
+            setIsLoginFailed(true);
+            setIsLoading(false);
+        } else {
             session.create(response.token, response.refreshToken, password);
             history.push("/");
         }

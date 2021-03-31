@@ -2,11 +2,26 @@ import { Avatar } from "@chakra-ui/avatar";
 import { Box, Container, Flex, Text } from "@chakra-ui/layout";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
-import { Auth } from "../../data/api/repositories/auth-repository";
+import { useEffect, useState } from "react";
+import * as authRepo from "../../data/api/repositories/auth-repository";
+import { get } from "../../helpers/session";
 
-const CHeader = () => {
-    const [auth, setAuth] = useState<Auth>({});
+type Props = {
+    onBarClicked?: () => void;
+};
+
+const CHeader = (props: Props) => {
+    const [auth, setAuth] = useState<authRepo.Auth>({});
+
+    useEffect(() => {
+        getAuth();
+    }, []);
+
+    const getAuth = async () => {
+        console.log(get().token);
+        const response = await authRepo.me();
+        setAuth(response.auth);
+    };
 
     return (
         <Box bg="blue.500" w="full" color="white">
