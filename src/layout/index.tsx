@@ -2,6 +2,7 @@ import { Box, Container, Flex } from "@chakra-ui/layout";
 import { useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router";
 import CHeader from "../components/header";
+import CSidebar from "../components/sidebar";
 import XDashboard from "../containers/dashboard";
 import * as session from "../helpers/session";
 
@@ -19,9 +20,15 @@ const Layout = () => {
 
                 <Flex w="full" flex="1">
                     <Container maxW="1200px" p="16px">
-                        <Switch>
-                            <Route exact path="/" component={XDashboard} />
-                        </Switch>
+                        <Flex w="full">
+                            <CSidebar />
+
+                            <Box w="full" ml={{ md: "32px" }}>
+                                <Switch>
+                                    <Route exact path="/" component={XDashboard} />
+                                </Switch>
+                            </Box>
+                        </Flex>
                     </Container>
                 </Flex>
             </Flex>

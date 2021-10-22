@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/layout";
 import { Helmet } from "react-helmet";
+import CStatistics from "../../components/statistics";
 import { TITLE } from "../../helpers/environtments";
 
 const XDashboard = () => (
@@ -8,7 +9,9 @@ const XDashboard = () => (
             <title>{`Dashboard | ${TITLE}`}</title>
         </Helmet>
 
-        dashborad
+        <Box>
+            <CStatistics />
+        </Box>
     </Box>
 );
 

@@ -4,7 +4,6 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import * as authRepo from "../../data/api/repositories/auth-repository";
-import { get } from "../../helpers/session";
 
 type Props = {
     onBarClicked?: () => void;
@@ -18,7 +17,6 @@ const CHeader = (props: Props) => {
     }, []);
 
     const getAuth = async () => {
-        console.log(get().token);
         const response = await authRepo.me();
         setAuth(response.auth);
     };
